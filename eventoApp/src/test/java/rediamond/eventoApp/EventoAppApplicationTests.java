@@ -1,10 +1,10 @@
-package rediamond.redcontrol;
+package rediamond.eventoApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RedControlApplicationTests {
+class EventoAppApplicationTests {
 
 	@Test
 	void contextLoads() {

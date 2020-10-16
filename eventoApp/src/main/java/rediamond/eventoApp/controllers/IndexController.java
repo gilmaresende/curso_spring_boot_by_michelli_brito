@@ -1,4 +1,4 @@
-package rediamond.redcontrol.controllers;
+package rediamond.eventoApp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 }

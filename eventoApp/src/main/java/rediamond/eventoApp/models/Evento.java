@@ -1,4 +1,4 @@
-package rediamond.redcontrol.models;
+package rediamond.eventoApp.models;
 
 public class Evento {
 
