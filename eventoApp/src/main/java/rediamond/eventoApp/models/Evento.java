@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class Evento implements Serializable {
 
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     public long getCodigo() {
         return codigo;
@@ -23,10 +23,34 @@ public class Evento implements Serializable {
     private String nome;
     private String local;
     private String data;
+    private String hora;
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 
     public void setCodigo(long codigo) {
         this.codigo = codigo;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getNome() {
@@ -36,7 +60,4 @@ public class Evento implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    private String horario;
-
 }
