@@ -7,14 +7,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Convidado {
 
-
     @Id
     private String rg;
     private String nomeConvidado;
 
     @ManyToOne
     private Evento evento;
-
 
     public String getRg() {
         return rg;

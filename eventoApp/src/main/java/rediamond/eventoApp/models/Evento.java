@@ -13,7 +13,6 @@ public class Evento implements Serializable {
         return codigo;
     }
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo;
