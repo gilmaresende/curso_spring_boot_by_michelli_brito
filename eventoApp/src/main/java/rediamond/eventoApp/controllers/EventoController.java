@@ -2,14 +2,18 @@ package rediamond.eventoApp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import rediamond.eventoApp.models.Convidado;
 import rediamond.eventoApp.models.Evento;
 import rediamond.eventoApp.repositorys.Convidadorepository;
 import rediamond.eventoApp.repositorys.EventoRepository;
+
+import javax.validation.Valid;
 
 @Controller
 public class EventoController {
@@ -26,10 +30,17 @@ public class EventoController {
     }
 
     @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.POST)
-    public String form(Evento evento) {
+    public String form(    @Valid Evento evento, BindingResult result, RedirectAttributes atributes) {
+        if (result.hasErrors()) {
+            atributes.addFlashAttribute("mensagem", "Verifique os campos.");
+            return "redirect:/cadastrarEvento";
+        }
         er.save(evento);
+        atributes.addFlashAttribute("mensagem", "Evento Salvo com Sucesso!");
+
         return "redirect:/cadastrarEvento";
     }
+
 
     @RequestMapping("/eventos")
     public ModelAndView listaEventos() {
@@ -53,11 +64,16 @@ public class EventoController {
     }
 
     @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-    public String detalhesEventoPost(@PathVariable("codigo") long codigo, Convidado convidado) {
+    public String detalhesEventoPost(@PathVariable("codigo") long codigo, @Valid Convidado convidado, BindingResult result, RedirectAttributes atributes) {
 
+        if (result.hasErrors()) {
+            atributes.addFlashAttribute("mensagem", "Verifique os campos.");
+            return "redirect:/{codigo}";
+        }
         Evento evento = er.findByCodigo(codigo);
         convidado.setEvento(evento);
         cr.save(convidado);
+        atributes.addFlashAttribute("mensagem", "Convidado adicionado com Sucesso!");
 
         return "redirect:/{codigo}";
     }
