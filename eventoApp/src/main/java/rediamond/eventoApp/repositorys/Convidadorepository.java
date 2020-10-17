@@ -6,4 +6,6 @@ import rediamond.eventoApp.models.Evento;
 
 public interface Convidadorepository extends CrudRepository<Convidado, String> {
     Iterable<Convidado> findByEvento(Evento evento);
+
+    Convidado findByRg(String rg);
 }
